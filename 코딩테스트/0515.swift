@@ -149,7 +149,7 @@ func run0515() {
   // ex) [1, 1, 3, 2, 2] 이면 3을 출력
   // ex) [1, 77, 34, 23, 34, 23, 1] 이면 77을 출력
   
-  var players = [1, 50, 34, 23, 34, 23, 1]
+  let players = [1, 50, 34, 23, 34, 23, 1]
   
   // 풀이 1. 딕셔너리 활용 - 갯수가 1인 것을 출력하게끔
   var playCount: [Int: Int] = [:]
@@ -190,7 +190,7 @@ func run0515() {
   // 남은 요소를 원래의 play에서 빼는 방식..?
   // [1, 2]
   var removePlay = players
-  var setPlay = Array(Set(players))
+  let setPlay = Array(Set(players))
   setPlay.forEach {
     removePlay.remove(at: removePlay.firstIndex(of: $0)!)
   }

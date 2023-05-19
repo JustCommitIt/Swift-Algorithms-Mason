@@ -73,3 +73,92 @@ func run0518() {
     print("#\(tc) \(maxSum - minSum)")
   }
 }
+
+
+
+func dfs_복습() {
+  let inputs = [
+    [7, 8],
+    [1, 2],
+    [1, 3],
+    [2, 4],
+    [2, 5],
+    [4, 6],
+    [5, 6],
+    [6, 7],
+    [3, 7]
+  ]
+  
+  let V = inputs[0][0]
+  let E = inputs[0][1]
+  var matrix = Array(repeating: Array(repeating: 0, count: V + 1), count: V + 1)
+  // 0번 인덱스는 사용하지 않기 위해 +1로 인접행렬 만듬
+  
+  for i in 1..<E {
+    let startIndex = inputs[i][0]
+    let endIndex = inputs[i][1]
+    matrix[startIndex][endIndex] = 1
+    matrix[endIndex][startIndex] = 1
+  }
+  
+  matrix.forEach { print($0) }
+  
+  var current = 0
+  var stack: [Int] = [inputs[1][0]]
+  var visited: Set<Int> = []
+  var track: [Int] = []
+  
+  while !stack.isEmpty {
+    current = stack.popLast()!
+    
+    if !visited.contains(current) {
+      visited.insert(current)
+      track.append(current)
+    }
+    
+    for destination in 1..<E {
+      if matrix[current][destination] == 1 && !visited.contains(destination) {
+        current = destination
+        
+        stack.append(destination)
+        
+      }
+    }
+  }
+  
+}
+/**
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 1, 1, 0, 0, 0, 0]
+[0, 1, 0, 0, 1, 1, 0, 0]
+[0, 1, 0, 0, 0, 0, 0, 1]
+[0, 0, 1, 0, 0, 0, 1, 0]
+[0, 0, 1, 0, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 1, 0, 1]
+[0, 0, 0, 1, 0, 0, 1, 0]
+ */
+
+// MARK: - 이진 탐색
+
+func binary_search() {
+  let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  
+  func binary_search(low: Int, high: Int, target: Int) -> Int? {
+    if low > high {
+      return nil
+    }
+    
+    let mid = (low + high) / 2
+    if target == numbers[mid] {
+      return mid
+    }
+    
+    if target < numbers[mid] {
+      return binary_search(low: low, high: mid - 1, target: target)
+    } else { // target > numbers[mid]
+      return binary_search(low: mid + 1, high: high, target: target)
+    }
+  }
+  
+  print(binary_search(low: 0, high: numbers.count - 1, target: 10)!)
+}

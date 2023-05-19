@@ -8,7 +8,12 @@
 import Foundation
 
 //run0516()
-//dfs_0516_복습()
 //print(solution(["muzi", "frodo", "apeach", "neo"], ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"], 2))
 //print(solution(["con", "ryan"], ["ryan con", "ryan con", "ryan con", "ryan con"], 3))
-run0518()
+//run0518()
+//dfs_복습()
+//binary_search()
+//dfs_재귀()
+//dfs_0518()
+
+run0518_DFS()
